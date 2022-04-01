@@ -55,18 +55,18 @@
                     "scene": null
                 },
                 {
-                    "name": "登陆",
+                    "name": "登录",
                     "pathName": "pages/login/index",
                     "query": "",
-                    "launchMode": "default",
-                    "scene": null
+                    "scene": null,
+                    "launchMode": "default"
                 },
                 {
                     "name": "个人中心",
                     "pathName": "pages/user/index",
                     "query": "",
-                    "scene": null,
-                    "launchMode": "default"
+                    "launchMode": "default",
+                    "scene": null
                 }
             ]
         }
