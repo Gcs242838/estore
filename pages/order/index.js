@@ -51,45 +51,24 @@ Page({
         })
     },
     //获取订单列表的方法
-    async getOrder(type){
+    async getOrder(type) {
         const token = wx.getStorageSync("token");
 
         const res = await request({
-            url:'/my/orders/all',
-            header:{token},
-            data:{type}
+            url: '/my/orders/all',
+            header: { token },
+            data: { type }
         });
         console.log(res);
     },
-    /**
-     * 生命周期函数--监听页面加载
-     */
-    onLoad: function (options) {
-    },
-
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow: function (options) {
+    onShow: function(options) {
         //1 获取当前小程序页面栈 - 数组 长度最大是10
         //2 数组中索引最大的页面就是当前页面
         let pages = getCurrentPages();
-        let currentPage = pages[pages.length-1];
+        let currentPage = pages[pages.length - 1];
         //console.log(currentPage.options);
         //3 获取url上的type参数
-        const {type} = currentPage.options;
+        const { type } = currentPage.options;
         this.getOrder(type);
     },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function () {
-    },
+})
