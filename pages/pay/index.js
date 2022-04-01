@@ -16,6 +16,7 @@
     6 手动删除缓存中 已经被选中了的商品
     7 删除后的购物车数据 填充回缓存
     8 再跳转页面
+    ////////
  */
 import { requestPayment } from "../../utils/asyncWx.js"
 import regeneratorRuntime from '../../lib/runtime/runtime';
