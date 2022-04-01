@@ -34,5 +34,30 @@ Page({
                 });
             }
         })
-    }
+    },
+
+    // getToken(e){
+    //     wx.login({
+    //         timeout:10000,
+    //         success: (res)=>{
+    //             console.log(res);
+    //             if(res.code){
+    //                 wx.request({
+    //                     url:'https://www.it120.cc/estore/user/wxapp/login',
+    //                     method:'POST',
+    //                     data:{
+    //                         code:res.code
+    //                     },
+    //                     header:{
+    //                         'content-type': 'application/x-www-form-urlencoded'
+    //                     },
+    //                     success: (res) =>{
+    //                         console.log(res);
+    //                     }
+    //                 })
+    //             }
+
+    //         }
+    //     });
+    // }
 })

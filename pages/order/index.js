@@ -1,6 +1,15 @@
 // pages/order/index.js
-import { request } from "../../request/index.js";
+
+//1 页面被打开的时候onShow 频繁打开用onShow
+//  0 onShow 不同于onLoad 无法在形参上接受 options参数
+//  1 获取url上的参数type
+//  2 根据type去发送请求获取订单数据
+//  3 渲染页面
+
+import { request } from "../../request/index";
 import regeneratorRuntime from '../../lib/runtime/runtime';
+//2 点击不同标题 重新发送请求来获取渲染信息
+
 Page({
 
     /**
@@ -8,6 +17,7 @@ Page({
      */
     data: {
         tabs: [{
+
                 id: 0,
                 value: "综合",
                 isActive: true
@@ -29,27 +39,6 @@ Page({
             }
         ]
     },
-    onShow(option) {
-        const token = wx.getStorageSync("token");
-        if (!token) {
-            wx.navigateTo({
-                url: '/pages/auth/index'
-            });
-            return;
-        }
-        // 1 获取当前的小程序的页面栈-数组 长度最大是10页面
-        let pages = getCurrentPages();
-        // 2 数组中 索引最大的页面就是当前页面
-        let currentPage = pages[pages.length - 1];
-        // 3 获取url上的type参数
-        const { type } = currentPage.options;
-        this.getOrders(type);
-    },
-    // 获取订单列表的方法
-    async getOrders(type) {
-        const res = await request({ url: "/my/orders/all", data: { type } });
-        console.log(res);
-    },
     handleTabsItemChange(e) {
         // 1 获取被点击的标题索引
         const { index } = e.detail
@@ -60,5 +49,47 @@ Page({
         this.setData({
             tabs
         })
-    }
-})
+    },
+    //获取订单列表的方法
+    async getOrder(type){
+        const token = wx.getStorageSync("token");
+
+        const res = await request({
+            url:'/my/orders/all',
+            header:{token},
+            data:{type}
+        });
+        console.log(res);
+    },
+    /**
+     * 生命周期函数--监听页面加载
+     */
+    onLoad: function (options) {
+    },
+
+    /**
+     * 生命周期函数--监听页面初次渲染完成
+     */
+    onReady: function () {
+
+    },
+
+    /**
+     * 生命周期函数--监听页面显示
+     */
+    onShow: function (options) {
+        //1 获取当前小程序页面栈 - 数组 长度最大是10
+        //2 数组中索引最大的页面就是当前页面
+        let pages = getCurrentPages();
+        let currentPage = pages[pages.length-1];
+        //console.log(currentPage.options);
+        //3 获取url上的type参数
+        const {type} = currentPage.options;
+        this.getOrder(type);
+    },
+
+    /**
+     * 生命周期函数--监听页面隐藏
+     */
+    onHide: function () {
+    },

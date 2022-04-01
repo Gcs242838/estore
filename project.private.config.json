@@ -1,14 +1,37 @@
 {
-    "setting": {},
-    "condition": {
-        "plugin": {
-            "list": []
+  "setting": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "name": "分类页面",
+          "pathName": "pages/category/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         },
-        "game": {
-            "list": []
+        {
+          "name": "商品列表",
+          "pathName": "pages/goods_list/index",
+          "query": "cid=5",
+          "launchMode": "default",
+          "scene": null
         },
-        "gamePlugin": {
-            "list": []
+        {
+          "name": "商品详情",
+          "pathName": "pages/goods_detail/index",
+          "query": "goods_id=43986",
+          "launchMode": "default",
+          "scene": null
         },
         "miniprogram": {
             "list": [
@@ -84,5 +107,7 @@
                 }
             ]
         }
+      ]
     }
+  }
 }

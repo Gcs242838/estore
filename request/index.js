@@ -3,6 +3,8 @@ let ajaxTimes = 0;
 export const request = (params) => {
     //定义公共的url
     // "https://api-hmugo-web.itheima.net/api/public/v1/categories"
+    //判断url中是否带有 /my/ 请求的是私有数据 带上header token
+    let header={};
     ajaxTimes++;
     // 显示加载中 效果
     wx.showLoading({

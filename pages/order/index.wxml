@@ -1,3 +1,9 @@
+
+<!--pages/order/index.wxml-->
 <Tabs tabs="{{tabs}}" bindtabsItemChange="handleTabsItemChange">
-    内容
+    <block wx:if="{{tabs[0].isActive}}">
+        111
+    </block>
+    <block wx:if="{{tabs[1].isActive}}">12</block>
+    <block wx:if="{{tabs[2].isActive}}">22</block>
 </Tabs>
