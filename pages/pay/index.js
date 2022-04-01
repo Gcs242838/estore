@@ -54,7 +54,7 @@ Page({
     async handleOrderPay() {
         try {
             // 1 判断缓存中有没有token
-        const token = wx.getStorageSync("token");
+        //const token = wx.getStorageSync("token");
         // 2 判断
         if (!token) {
             wx.navigateTo({
@@ -124,6 +124,9 @@ Page({
         let newCart = wx.getStorageSync("cart");
         let havePaid = newCart.filter(v=>v.checked);
         wx.setStorageSync('havePaid',havePaid);
+        //然后再把缓存清空
+        newCart = newCart.filter(v=>!v.checked);
+        wx.setStorageSync("cart",newCart);
         }
     }
 })
