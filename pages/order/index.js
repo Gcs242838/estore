@@ -4,6 +4,9 @@
 //  1 获取url上的参数type
 //  2 根据type去发送请求获取订单数据
 //  3 渲染页面
+
+import { request } from "../../request/index";
+import regeneratorRuntime from '../../lib/runtime/runtime';
 //2 点击不同标题 重新发送请求来获取渲染信息
 Page({
 
@@ -33,12 +36,6 @@ Page({
         },
     ]
     },
-    onShow(options){
-        //1 获取当前小程序页面栈 - 数组 长度最大是10
-        let pages = getCurrentPages();
-        console.log(pages);
-        //
-    },
     handleTabsItemChange(e) {
         // 1 获取被点击的标题索引
         const { index } = e.detail
@@ -49,6 +46,17 @@ Page({
         this.setData({
             tabs
         })
+    },
+    //获取订单列表的方法
+    async getOrder(type){
+        const token = wx.getStorageSync("token");
+
+        const res = await request({
+            url:'/my/orders/all',
+            header:{token},
+            data:{type}
+        });
+        console.log(res);
     },
     /**
      * 生命周期函数--监听页面加载
@@ -66,8 +74,15 @@ Page({
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow: function () {
-
+    onShow: function (options) {
+        //1 获取当前小程序页面栈 - 数组 长度最大是10
+        //2 数组中索引最大的页面就是当前页面
+        let pages = getCurrentPages();
+        let currentPage = pages[pages.length-1];
+        //console.log(currentPage.options);
+        //3 获取url上的type参数
+        const {type} = currentPage.options;
+        this.getOrder(type);
     },
 
     /**
