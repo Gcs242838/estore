@@ -17,7 +17,6 @@ Page({
         // const loginParams = { encryptedData, rawData, iv, signature, code };
         // const res = await request({ url: "/users/wxlogin", data: loginParams, method: "post" });
         // console.log(res);
-        //这个token是教学用的，正常流程是上面的方式
         let token="Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjIzLCJpYXQiOjE1NjQ3MzAwNzksImV4cCI6MTAwMTU2NDczMDA3OH0.YPt-XeLnjV-_1ITaXGY2FhxmCe4NvXuRnRB8OMCfnPo";
         wx.setStorageSync("token", token);
         wx.navigateBack({
