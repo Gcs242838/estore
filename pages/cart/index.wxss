@@ -30,6 +30,12 @@ page {
   padding: 10rpx;
   border-bottom: 1px solid #ccc;
 }
+.cart_content .cart_main .cart_item .cart_chk_wrap {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .cart_content .cart_main .cart_item .cart_img_wrap {
   flex: 2;
   display: flex;
