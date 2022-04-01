@@ -63,7 +63,7 @@ page {
   justify-content: space-between;
 }
 .cart_content .cart_main .cart_item .cart_info_wrap .goods_price_wrap .goods_price {
-  color: var(--themeColor);
+  color: #eb4450;
   font-size: 34rpx;
 }
 .cart_content .cart_main .cart_item .cart_info_wrap .goods_price_wrap .cart_num_tool {
@@ -87,13 +87,19 @@ page {
   display: flex;
   border-top: 1rpx solid #ccc;
 }
+.footer_tool .all_chk_wrap {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .footer_tool .total_price_wrap {
   flex: 5;
   padding-right: 15rpx;
   text-align: right;
 }
 .footer_tool .total_price_wrap .total_price text.total_price_text {
-  color: var(--themeColor);
+  color: #eb4450;
   font-size: 32rpx;
   font-weight: 600;
 }
