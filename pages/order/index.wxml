@@ -1,3 +1,4 @@
+
 <!--pages/order/index.wxml-->
 <Tabs tabs="{{tabs}}" bindtabsItemChange="handleTabsItemChange">
     <block wx:if="{{tabs[0].isActive}}">

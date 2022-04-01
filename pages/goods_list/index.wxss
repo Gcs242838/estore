@@ -24,6 +24,6 @@
   -webkit-line-clamp: 2;
 }
 .first_tab .goods_item .goods_info_wrap .goods_price {
-  color: var(--themeColor);
+  color: #eb4450;
   font-size: 32rpx;
 }
