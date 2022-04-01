@@ -119,7 +119,11 @@ Page({
                 icon:'error',
                 duration: 2000,
             });
-            console.log(error);
+            //console.log(error);
+        //因为不能付款，所以把购买了的放进缓存里
+        let newCart = wx.getStorageSync("cart");
+        let havePaid = newCart.filter(v=>v.checked);
+        wx.setStorageSync('havePaid',havePaid);
         }
     }
 })
