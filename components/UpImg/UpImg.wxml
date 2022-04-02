@@ -1,0 +1,7 @@
+<!--components/UpImg/UpImg.wxml-->
+<view class="up_img_wrap">
+    <image src="{{src}}"></image>
+    <icon class="" type="clear" size="23" color="#66d5d1">
+        
+    </icon>
+</view>

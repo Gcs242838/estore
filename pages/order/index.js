@@ -39,16 +39,23 @@ Page({
             }
         ]
     },
+    //根据标题索引来激活选中 标题数组
+    changeTitleByIndex(index){
+           // 2 修改原数组
+           let { tabs } = this.data;
+           tabs.forEach((v, i) => i === index ? v.isActive = true : v.isActive = false);
+           // 3 赋值到data中
+           this.setData({
+               tabs
+           })
+    },
     handleTabsItemChange(e) {
         // 1 获取被点击的标题索引
         const { index } = e.detail
             // 2 修改原数组
-        let { tabs } = this.data;
-        tabs.forEach((v, i) => i === index ? v.isActive = true : v.isActive = false);
-        // 3 赋值到data中
-        this.setData({
-            tabs
-        })
+        this.changeTitleByIndex(index);
+        //重新发送请求 type=1 index=0
+        this.getOrder(index+1);
     },
     //获取订单列表的方法
     async getOrder(type) {
@@ -60,6 +67,13 @@ Page({
             data: { type }
         });
         console.log(res);
+        if(!res){
+            console.log("order是空的")
+        }else{
+            this.setData({
+                order:res.orders
+            })
+        }
     },
     onShow: function(options) {
         //1 获取当前小程序页面栈 - 数组 长度最大是10
@@ -69,6 +83,8 @@ Page({
         //console.log(currentPage.options);
         //3 获取url上的type参数
         const { type } = currentPage.options;
+        //4.激活选中页面标题 当type-1时  index=0
+        this.changeTitleByIndex(type-1);
         this.getOrder(type);
     },
 })
