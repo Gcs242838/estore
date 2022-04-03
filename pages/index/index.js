@@ -34,6 +34,10 @@ Page({
     getSwiperList() {
         request({ url: '/home/swiperdata' })
             .then(result => {
+                // 替换域名以便真机调试显示
+                for (let i = 0; i < result.length; i++) {
+                    result[i].image_src = result[i].image_src.replace("api-hmugo-web.itheima.net", "test.2te.cc");
+                }
                 this.setData({
                     swiperList: result
                 })
@@ -43,6 +47,10 @@ Page({
     getCateList() {
         request({ url: '/home/catitems' })
             .then(result => {
+                // 替换域名以便真机调试显示
+                for (let i = 0; i < result.length; i++) {
+                    result[i].image_src = result[i].image_src.replace("api-hmugo-web.itheima.net", "test.2te.cc");
+                }
                 this.setData({
                     catesList: result
                 })
@@ -52,6 +60,13 @@ Page({
     getFloorList() {
         request({ url: '/home/floordata' })
             .then(result => {
+                // 替换域名以便真机调试显示
+                for (let i = 0; i < result.length; i++) {
+                    result[i].floor_title.image_src = result[i].floor_title.image_src.replace("api-hmugo-web.itheima.net", "test.2te.cc");
+                    for (let j = 0; j < result[i].product_list.length; j++) {
+                        result[i].product_list[j].image_src = result[i].product_list[j].image_src.replace("api-hmugo-web.itheima.net", "test.2te.cc");
+                    }
+                }
                 this.setData({
                     floorList: result
                 })
