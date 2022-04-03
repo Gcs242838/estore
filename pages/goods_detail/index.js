@@ -47,6 +47,7 @@ Page({
     // 获取商品的详情数据
     async getGoodsDetail(goods_id) {
         const goodsObj = await request({ url: "/goods/detail", data: { goods_id } });
+        console.log(goodsObj);
         this.GoodsInfo = goodsObj;
         // 1 获取缓存中的商品收藏的数组
         let collect = wx.getStorageSync("collect") || [];
