@@ -87,6 +87,13 @@ Page({
         let leftMenuList = this.Cates.map(v => v.cat_name);
         // 构造右侧的商品数据
         let rightContent = this.Cates[0].children;
+        // 替换域名以便真机调试显示
+        for (let i = 0; i < rightContent.length; i++) {
+            for (let j = 0; j < rightContent[i].children.length; j++) {
+                rightContent[i].children[j].cat_icon = rightContent[i].children[j].cat_icon.replace("api-hmugo-web.itheima.net", "test.2te.cc");
+            }
+        }
+        console.log(rightContent);
         this.setData({
             leftMenuList,
             rightContent

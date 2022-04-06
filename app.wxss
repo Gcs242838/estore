@@ -20,7 +20,8 @@ navigator {
 
 page {
     /* 定义主题颜色 */
-    --themeColor: #eb4450;
+    /* --themeColor: #eb4450; */
+    --themeColor: #66d5d1;
     font-size: 28rpx;
 }
 

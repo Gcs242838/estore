@@ -33,6 +33,17 @@ page{
           display: flex;
           padding: 10rpx;
           border-bottom: 1px solid #ccc;
+        .cart_chk_wrap{
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            checkbox-group{
+                checkbox{
+
+                }
+            }
+        }
         .cart_img_wrap {
             flex: 2;
             display: flex;
@@ -60,7 +71,7 @@ page{
                 display: flex;
                 justify-content: space-between;
                 .goods_price {
-                    color: var(--themeColor);
+                    color: #eb4450;
                     font-size: 34rpx;
                 }
   
@@ -81,22 +92,28 @@ page{
   }
 
   /* 底部工具栏 */
-    .footer_tool {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 90rpx;
-        background-color: #fff;
+.footer_tool {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 90rpx;
+    background-color: #fff;
+    display: flex;
+    border-top: 1rpx solid #ccc;
+    .all_chk_wrap{
+        flex: 2;
         display: flex;
-        border-top: 1rpx solid #ccc;
+        justify-content: center;
+        align-items: center;
+    }
     .total_price_wrap {
         flex: 5;
         padding-right: 15rpx;
         text-align: right;
         .total_price {
             text.total_price_text {
-                color: var(--themeColor);
+                color: #eb4450;
                 font-size: 32rpx;
                 font-weight: 600;
             }
@@ -112,4 +129,4 @@ page{
         justify-content: center;
         align-items: center;
     }
-  }
+}

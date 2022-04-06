@@ -1,10 +1,63 @@
 // pages/login/index.js
+// Page({
+//     handleGetUserInfo(e) {
+//         console.log(e);
+//         const { userInfo } = e.detail;
+//         wx.setStorageSync("userinfo", userInfo);
+//         wx.navigateBack({
+//             delta: 1
+//         });
+//     }
+// })
+// 不推荐使用getUserInfo获取用户信息，预计自2021年4月13日起，getUserInfo将不再弹出弹窗，并直接返回匿名的用户个人信息!!!
 Page({
-    handleGetUserInfo(e) {
-        const { userInfo } = e.detail;
-        wx.setStorageSync("userinfo", userInfo);
-        wx.navigateBack({
-            delta: 1
-        });
-    }
+    data: {
+        userInfo: {},
+        hasUserInfo: false
+    },
+    onLoad() {},
+    getUserProfile(e) {
+        // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认
+        // 开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
+        wx.getUserProfile({
+            desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+            success: (res) => {
+                console.log(res);
+                this.setData({
+                        userInfo: res.userInfo,
+                        hasUserInfo: true
+                    })
+                    // 将用户信息保存至缓存
+                wx.setStorageSync("userinfo", res.userInfo);
+                wx.navigateBack({
+                    delta: 1
+                });
+            }
+        })
+    },
+
+    // getToken(e){
+    //     wx.login({
+    //         timeout:10000,
+    //         success: (res)=>{
+    //             console.log(res);
+    //             if(res.code){
+    //                 wx.request({
+    //                     url:'https://www.it120.cc/estore/user/wxapp/login',
+    //                     method:'POST',
+    //                     data:{
+    //                         code:res.code
+    //                     },
+    //                     header:{
+    //                         'content-type': 'application/x-www-form-urlencoded'
+    //                     },
+    //                     success: (res) =>{
+    //                         console.log(res);
+    //                     }
+    //                 })
+    //             }
+
+    //         }
+    //     });
+    // }
 })
